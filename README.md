@@ -1,12 +1,8 @@
-# resources
+## aeon-working-directory
 
 Cloudy, in here, ain't it?
 
-## The plan
-
-What is the plan on deploying this code?
-
-## Deployment sequence
+### Deployment sequence criteria
 
 THe word is: "all of them can go simultanious, but api-gateway as last one" meaning the order is up to me. Gateway obviously last, no problems. Will see.
 
