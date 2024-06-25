@@ -25,4 +25,34 @@ Check-into the keyvault script as it might prove handy at a later point in the a
 The `deploy` directory as root.
 
 * `kubectl create namespace testing --dry-run=none`
+
 * `kubectl apply -f platform-api.deployment.yml --dry-run=server`
+* `kubectl apply -f platform-api.configmap.yml`
+* `kubectl apply -f platform-api.service.yml`
+
+* `kubectl apply -f statement-api.deployment.yml`
+* `kubectl apply -f statement-api.configmap.yml`
+* `kubectl apply -f statement-api.service.yml`
+
+* `kubectl apply -f user-api.deployment.yml`
+* `kubectl apply -f user-api.configmap.yml`
+* `kubectl apply -f user-api.service.yml`
+
+* `kubectl apply -f member-portal.deployment.yml`
+* `kubectl apply -f member-portal.configmap.yml`
+* `kubectl apply -f member-portal.ingress.yml`
+* `kubectl apply -f member-portal.service.yml`
+
+* `kubectl apply -f frontend.deployment.yml`
+* `kubectl apply -f frontend.configmap.yml`
+* `kubectl apply -f frontend.ingress.yml`
+* `kubectl apply -f frontend.service.yml`
+
+* `kubectl apply -f works-api.deployment.yml`
+* `kubectl apply -f works-api.configmap.yml`
+* `kubectl apply -f works-api.service.yml`
+
+* `kubectl apply -f api-gateway.deployment.yml`
+* `kubectl apply -f api-gateway.configmap.yml`
+* `kubectl apply -f api-gateway.ingress.yml`
+* `kubectl apply -f api-gateway.service.yml`
