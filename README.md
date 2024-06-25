@@ -19,3 +19,10 @@ Deploy in this order
 * API-Gateway
 
 Check-into the keyvault script as it might prove handy at a later point in the aiventure.
+
+### Sequential commands
+
+The `deploy` directory as root.
+
+* `kubectl create namespace testing --dry-run=none`
+* `kubectl apply -f platform-api.deployment.yml --dry-run=server`
