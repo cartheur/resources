@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: testing
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      tolerations:
+        - key: kubernetes.azure.com/scalesetpriority
+          operator: Equal
+          value: spot
+          effect: NoSchedule
+      containers:
+        - name: frontend
+          image: mbsakswetestaccacr.azurecr.io/buma-stemra-mono/frontend:107.0
+          ports:
+            - containerPort: 80
+          command:
+            - static-web-server
+            - '--port'
+            - '80'
+            - '--root'
+            - /public
+            - '--page-fallback'
+            - /public/index.html
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: frontend-configmap

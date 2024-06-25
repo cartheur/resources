@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: member-portal-ingress
+  namespace: testing
+spec:
+    ingressClassName: nginx-internal
+    rules:
+      - host: backstage.testing.k8s.bumastemra.nl
+        http:
+          paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: member-portal-service
+                  port:
+                    number: 8080
+
+    tls:
+        -   hosts:
+            - backstage.testing.k8s.bumastemra.nl
+            secretName: testing-tls-secret

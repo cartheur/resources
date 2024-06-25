@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: member-portal
+  namespace: testing
+  labels:
+    app: member-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: member-portal
+  template:
+      metadata:
+        labels:
+          app: member-portal
+      spec:
+        tolerations:
+          - key: kubernetes.azure.com/scalesetpriority
+            operator: Equal
+            value: spot
+            effect: 'NoSchedule'
+        volumes:
+          - name: member-portal-config
+            configMap:
+              name: member-portal-configmap
+              items:
+                - key: .env
+                  path: .env
+        containers:
+          - name: member-portal
+            image: mbsakswetestaccacr.azurecr.io/member-portal:103.0
+            ports:
+              - containerPort: 80
+            imagePullPolicy: Always
+            volumeMounts:
+              - mountPath: /var/www/symfony/.env
+                name: member-portal-config
+                subPath: .env
