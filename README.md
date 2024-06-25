@@ -56,3 +56,17 @@ The `deploy` directory as root.
 * `kubectl apply -f api-gateway.configmap.yml`
 * `kubectl apply -f api-gateway.ingress.yml`
 * `kubectl apply -f api-gateway.service.yml`
+
+### Observed errors
+
+```
+docker run -it mbsakswetestaccacr.azurecr.io/member-portal:103.0
+
+Fatal error: Uncaught Symfony\Component\Dotenv\Exception\PathException: Unable to read the "/var/www/symfony/bin/../.env" environment file. in /var/www/symfony/vendor/symfony/dotenv/Dotenv.php:514
+Stack trace:
+#0 /var/www/symfony/vendor/symfony/dotenv/Dotenv.php(65): Symfony\Component\Dotenv\Dotenv->doLoad(false, Array)
+#1 /var/www/symfony/bin/console(22): Symfony\Component\Dotenv\Dotenv->load('/var/www/symfon...')
+#2 {main}
+  thrown in /var/www/symfony/vendor/symfony/dotenv/Dotenv.php on line 514
+
+```
