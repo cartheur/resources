@@ -1,0 +1,198 @@
+version: '3.1'
+
+services:
+  wordpress1:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress2:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress3:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress4:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress5:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress6:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress7:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress8:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress9:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  wordpress10:
+    image: wordpress:php8.3-fpm
+    restart: always
+    volumes:
+      - wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    environment:
+      WORDPRESS_DB_HOST: db-wordpress
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    extra_hosts:
+      - "www.stylizhgym.nl:172.16.1.5"
+
+  db-wordpress:
+    image: mysql:8.0.16
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - wordpress-db:/var/lib/mysql
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - wordpress:/var/www/html
+      - ./nginx-conf:/etc/nginx/conf.d
+    depends_on:
+      - wordpress1
+      - wordpress2
+      - wordpress3
+      - wordpress4
+      - wordpress5
+      - wordpress6
+      - wordpress7
+      - wordpress8
+      - wordpress9
+      - wordpress10
+
+  ftp:
+    image: stilliard/pure-ftpd
+    environment:
+      PUBLICHOST: 185.106.226.22
+      FTP_USER_NAME: stylizhgym
+      FTP_USER_PASS: 100%Stylizh
+      FTP_USER_HOME: /var/www/html/
+    ports:
+      - target: 21
+        published: 21
+        protocol: tcp
+        mode: host
+      - target: 30000
+        published: 30000
+        protocol: tcp
+        mode: host
+    volumes:
+      - wordpress:/var/www/html/
+    restart: always
+
+volumes:
+  wordpress:
+  wordpress-db:
