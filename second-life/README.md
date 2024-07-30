@@ -5,6 +5,7 @@
 1. Install Minikube
 2. Create the `testing` namespace using `kubectl create namespace testing`
 3. Switch into the `testing` namespace using `kubectl config set-context --current --namespace=testing`
+4. Login to the ACR: `az acr login -n mbsakswetestaccacr`
 2. Load the images from the repository into Minikube internal repository via `minikube image load <image>`, e.g.: `minikube image load mbsakswetestaccacr.azurecr.io/buma-stemra-mono/user-service:107.0`
 3. Login to Azure via `az login` in order ot access the MBS-ACC-KV-01 Keyvault to create the credentials
 4. Run `./deploy.sh`
