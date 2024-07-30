@@ -20,3 +20,6 @@ Run the following port-forward commands:
 Testing the services:
 - Frontend: `http://localhost:3000`
 - API Gateway: `http://localhost:3100/graphql`
+
+adm_ctuck@bumastemra.nl
+CTcd@BS040624
