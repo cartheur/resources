@@ -1,0 +1,86 @@
+apiVersion: 'v1'
+kind: 'ConfigMap'
+metadata:
+  namespace: 'testing'
+  name: 'works-api-configmap'
+data:
+  APP_ENV: "acceptance"
+  NODE_ENV: "production"
+  API_GATEWAY_URL: "https://api.testing.k8s.bumastemra.nl"
+  PORTAL_URL: "https://frontend.testing.k8s.bumastemra.nl"
+  PUPPETEER_EXECUTABLE_PATH: "/home/gitlab/chromium/linux-1056772/chrome-linux/chrome"
+  PUPPETEER_ENABLED: 'false'
+  SERVICE_CALL_TOKEN: "${service-call-token}"
+  EXPRESS_REQUEST_TIMEOUT: '600000'
+  SECRET_SALT: "${secret-salt}"
+  JWT_PRIVATE_KEY: "-----BEGIN PRIVATE KEY----- MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDmaS1IKsM09Nv7 ih2CFLnPGlQShpM62xvIg1FzbAny8KRE5xsJHAP+y5v9tMT3vE40GwXK9+LgLhTT n6j731aTJT6HNXtZ/oAtQwB7/K1+54JLXzx0fwQohAAGmT/f3YC18bMVhK/+F6pM JWT6qqqTv7dp0M576XATXlfTxZk80XDGKuzViXETkzQ1mctcbtutODLx4MOvTqSC C/igDWg7Xm96toSm62Lc0FzvFgH8bsoFibt8KaRIc5HL/kZ3lA4MwLMCltioLBt4 BOoCidXqip9pSOA3wHqsN7iZVOS4sdrE0GGF8ug+S1fxCRI9fLBFnL8zmVUdxdVI dVZQdlw1AgMBAAECggEAcFo3F2qqt2by4exOSUD7/e4TstjmcBupp5PJIuQ60bjg ES00NLPxiswUK5l7NmYfKC9JGtjXS4OM6kh/aRpVp/jQTbQZix+btvZmBQ+INkqD cWdmHlRVXcBIFu+hgvMKsS3DqqmB+//kLa9KVyTjeppQwItuNGP3H6qwXvaKq2l0 af7R/Z6rSJjh/ub5YfOauJMy3W2uk27wHJOfRtmpVKz8+4mKK8OS6uyDLCET37fd 6dMsHibqqswlO40rsiz6JC0lhRCLnYb9ZLxDf5IvZNl4tNOaHVG+a2DXvYNEpOkW q5BZk3DYMI9SAb4p3vcdTypEGkxUdz7pYDPNRINWwQKBgQD9He6v75qapt3hoYQi kSV3NypMCHIzTGBs+mHj+ZZVu7Rn8PdM23Sc2+knFoCntC6kGdv2+flMRapiTbis C0sROF2bbEeMnDIaSmWgRp9BcGfKY7oQ+AOseaJ1Ig+7XAb0fbjYmLT1yRK3PYvP q++yXCIeqBk9Cp/L5PXGsL4bhQKBgQDpCQkW2f3byisl7Zz3hkQbokQv+yOpz8ru 4ls7XMxzFO8oNbOrNBQdjJdoBTOMmXc9uRsry/e7sOzls1T7XdH+QRtbsWbRuMm3 Yp/Kc8xGikNHfj7c0+4Gk40fp6nCbiQlU0CKdV2TmWTLZ/A7znLd1a4HseyujWny a795o8zk8QKBgGD33aAzJ8SFls1AxlFDz9mbHa4hMjbq1KoLRgNDc8+GaHfFfchI 7qTFLs4VtdYJljCx4237mAEbU0nzwoLOlMSVFm9bjRGWKS+fPs2nII2+VVTY3chw a1/g/VboZKR/ff6eR3lbD0B19qCSiIRXty1aVIvwFDMpZcyD+5BR15LNAoGBAOSY GHJyJLQV/X2XOQMWknkJFBp9IN7TFx5+rT/uKCA7yN6Iz1aCH7lc0KkZcRfa8z14 905fJwTW6Yvp/tMVlYj0FQI9Y78Wpcle1aCjNx97QcQ/8ypsOnH5C9ahgcVYhdyX bhhkSQcg0d82dlI0kjlKAw1JXANedS94wrtwEu4BAoGANb2G/QuRhvwki0rd/3fA pxEWv+Yw1BYjXD28XI2JdGn8IppGjzD4jwyhoNu/hhO23bzvtG0BPxIRci2sdGAD 0gLcah6AsutXff+Rof5PMuHo2xdOZQHEEaWlLOEHGOLlZkMLX4cYH6uUfFghx8sn P8r2e+XmAQJVR7ecBTSX/UU= -----END PRIVATE KEY-"
+  JWT_PUBLIC_KEY: "-----BEGIN PUBLIC KEY----- MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5mktSCrDNPTb+4odghS5 zxpUEoaTOtsbyINRc2wJ8vCkROcbCRwD/sub/bTE97xONBsFyvfi4C4U05+o+99W kyU+hzV7Wf6ALUMAe/ytfueCS188dH8EKIQABpk/392AtfGzFYSv/heqTCVk+qqq k7+3adDOe+lwE15X08WZPNFwxirs1YlxE5M0NZnLXG7brTgy8eDDr06kggv4oA1o O15veraEputi3NBc7xYB/G7KBYm7fCmkSHORy/5Gd5QODMCzApbYqCwbeATqAonV 6oqfaUjgN8B6rDe4mVTkuLHaxNBhhfLoPktX8QkSPXywRZy/M5lVHcXVSHVWUHZc NQIDAQAB -----END PUBLIC KEY-----"
+  SENTRY_ENABLED: 'true'
+  PM2_MODE: "cluster"
+  PM2_MERGE_LOGS: 'true'
+  SSO_URL: "https://login-acc.bumastemra.nl"
+  SSO_API_KEY: "${sso-service-token}"
+  SSO_TENANT_ID: "${sso-tenant-id}"
+  SSO_APPLICATIONS: '{"SetlistApp":"7df87155-34f1-4f29-9220-f4c70f4f86cf","MijnBumaStemra":"af634f5f-b884-4fc7-ab00-643ade2548fb","Backstage":"cb2c1078-49fe-432c-841b-08503dc05cd2","BumaStemraSSO":"3c219e58-ed0e-4b18-ad48-f4f92793ae32"}'
+  DATABASE_HOST: "mbs-postgresql-acc-01.postgres.database.azure.com"
+  DATABASE_PASSWORD: "${postgres-password}"
+  DATABASE_USERNAME: "${postgres-username}"
+  DATABASE_PORT: '5432'
+  DATABASE_SSL_ENABLED: 'true'
+  DATABASE_QUERY_DEBUG: 'false'
+  DATABASE_PLATFORM_API_HOST: "mbs-postgresql-acc-01.postgres.database.azure.com"
+  DATABASE_PLATFORM_API_NAME: "platform_api"
+  DATABASE_PLATFORM_API_PASSWORD: "${postgres-password}"
+  DATABASE_PLATFORM_API_USERNAME: "${postgres-username}"
+  DATABASE_PLATFORM_API_PORT: '5432'
+  DATABASE_PLATFORM_API_QUERY_DEBUG: 'false'
+  DATABASE_PLATFORM_API_SSL_ENABLED: 'true'
+  DATABASE_FUSIONAUTH_HOST: "mbs-postgresql-acc-01.postgres.database.azure.com"
+  DATABASE_FUSIONAUTH_NAME: "fusionauth"
+  DATABASE_FUSIONAUTH_PASSWORD: "${postgres-password}"
+  DATABASE_FUSIONAUTH_USERNAME: "${postgres-username}"
+  DATABASE_FUSIONAUTH_PORT: '5432'
+  DATABASE_FUSIONAUTH_QUERY_DEBUG: 'false'
+  DATABASE_FUSIONAUTH_SSL_ENABLED: 'true'
+  ELASTIC_SEARCH_URL: "http://mbs-elasticsearch-acc.int.bumastemra-otc.nl"
+  ELASTIC_SEARCH_PORT: '9200'
+  ELASTIC_SEARCH_INDEXER_LIMIT: '10000'
+  ELASTIC_SEARCH_INDICES: '{"IPI":"ipi-index-acceptance","WORKS":"works-index-acceptance"}'
+  ICE_SSL: 'false'
+  ICE_HOST: "icecubeservices.iceaccess.com"
+  ICE_BASEPATH: "wsanP023/rest/"
+  ICE_AUTH_USERNAME: "${icecube-username}"
+  ICE_AUTH_PASSWORD: "${icecube-password}"
+  ICE_DEBUG: 'false'
+  KAFKA_CONSUMER_BROKERS: '["kafka-workers-acc.int.bumastemra.nl:9092"]'
+  KAFKA_PRODUCER_BROKERS: '["kafka-workers-acc.int.bumastemra.nl:9092"]'
+  KAFKA_PRODUCER_TOPIC_PLATFORM: "ACCEPTANCE_PLATFORM"
+  KAFKA_PRODUCER_TOPIC_MAIN: "ACCEPTANCE_MAIN"
+  KAFKA_PRODUCER_TOPIC_NAW: "ACCEPTANCE_NAW"
+  KAFKA_PRODUCER_TOPIC_SETLISTS: "ACCEPTANCE_PLATFORM"
+  KAFKA_PRODUCER_SAVE_PATH: "/tmp/mbs-kafka"
+  AZURE_STORAGE_CONFIG: '[{"name":"deprecated-storage","type":"blob","account":"bsotcweadcastd02","sasToken":"${mbs-blob-sas-token-soundfiles}","services":[{"name":"soundfiles","service":"bsotcweadcastd02container"}]},{"name":"mbs-storage","type":"blob","sasToken":"${azure-blob-mbs-storage-sas-token}","account":"mbsstorageacc","services":[{"name":"work-agreements","service":"work-agreements"},{"name":"setlists","service":"setlists"},{"name":"cession-assignments","service":"cession-assignments"},{"name":"membership-registration","service":"membership-registration"},{"name":"beat","service":"beat"}]},{"name":"mbs-storage-sound-files","type":"blob","sasToken":"${azure-blob-mbs-storage-sas-token}","account":"mbsstorageacc","services":[{"name":"sound-files","service":"sound-files"}]},{"name":"mbs-fileservice","type":"blob","account":"mbsfileserviceacc","sasToken":"${fileservice-blob-access-key}","services":[{"name":"works-service","service":"works-service"},{"name":"statement-service","service":"statement-service"},{"name":"user-service","service":"user-service"}]},{"name":"mbs-fileshare","type":"fileshare","account":"mbsportaldocacc","sasToken":"${azure-fileshares-mbs-statement-documents-sas-token}","services":[{"name":"published-documents","service":"mbsportaldocsacc"}]}]'
+  REDIS_HOST: "mbs-redis-acc.int.bumastemra-otc.nl"
+  REDIS_PASSWORD: "${redis-access-key}"
+  REDIS_PORT: '6379'
+  REDIS_DB_INDEX_FILE_SERVICE: '0'
+  REDIS_DB_INDEX_FLOOD_SERVICE: '1'
+  GRAPHQL_PLAYGROUND_ENABLED: 'true'
+  GRAPHQL_INTROSPECTION_ENABLED: 'true'
+  GRAPHQL_DEPTH_LIMIT: '10'
+  PM2_NAME: "works-service-graphql"
+  PM2_SCRIPT: "./api/main.js"
+  PM2_INSTANCES: '2'
+  PM2_INTERPRETER_ARGS: "--require /var/www/apps/works-service-api/.pnp.cjs --max-http-header-size"
+  SENTRY_DSN: "https://ced41f70f03c4690b1b506869717659b@sentry.bumastemra.nl/39"
+  PORT: '8080'
+  PLATFORM_SERVICE_API_URL: "http://platform-api-service:8080/v1"
+  FILESERVICE_WORKS_EXPORT_QUEUE: "works-export"
+  SETLISTS_TEMPLATE_NAME: "default.xlsx"
+  SPOTIFY_CLIENT_ID: "${spotify-client-id}"
+  SPOTIFY_CLIENT_SECRET: "${spotify-client-secret}"
+  AX_SETLISTS_SOAP_SERVICE: "http://no-exist.com"
+  AX_SETLISTS_SOAP_SERVICE_VERBOSE: 'true'
+  POSTMARK_SERVER_API_TOKEN: "${postmark-server-api-token}"
+  DATABASE_NAME: "works"
+  GOOGLE_API_KEY: "${google-places-api-key}"
