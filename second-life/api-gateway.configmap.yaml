@@ -4,10 +4,10 @@ metadata:
   namespace: 'testing'
   name: 'api-gateway-configmap'
 data:
-  APP_ENV: "acceptance"
+  APP_ENV: "development"
   NODE_ENV: "production"
-  API_GATEWAY_URL: "https://api.testing.k8s.bumastemra.nl"
-  PORTAL_URL: "https://frontend.testing.k8s.bumastemra.nl"
+  API_GATEWAY_URL: "http://localhost:8080"
+  PORTAL_URL: "http://localhost:3000"
   PUPPETEER_EXECUTABLE_PATH: "/home/gitlab/chromium/linux-1056772/chrome-linux/chrome"
   PUPPETEER_ENABLED: 'false'
   SERVICE_CALL_TOKEN: "${service-call-token}"

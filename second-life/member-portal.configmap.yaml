@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: testing
+  name: member-portal-configmap
+data:
+  .env: |
+    APP_ENV=dev
+    APP_SECRET=ThisWasATriumphImMakingANoteHereHugeSuccess
+    APPLICATION_HOSTNAME=frontend.testing.k8s.bumastemra.nl
+    OTAP_ENV=production
+    STAGE=acceptance
+    RELEASE=103.0
+
+    SENTRY_DSN=https://9a0cab14331b4bab84401a182f381a64@sentry.cmp.bumastemra-otc.nl/27
+
+    CORS_ALLOW_ORIGIN=*
+
+    SSO_URL=http://172.28.52.4:9011
+    SSO_API_KEY=${sso-service-token}
+    SSO_BACKSTAGE_CLIENT_ID=cb2c1078-49fe-432c-841b-08503dc05cd2
+    SSO_BACKSTAGE_CLIENT_SECRET=
+    SSO_MEMBERPORTAL_CLIENT_ID=af634f5f-b884-4fc7-ab00-643ade2548fb
+    SSO_SETLIST_CLIENT_ID=7df87155-34f1-4f29-9220-f4c70f4f86cf
+
+    DATABASE_DRIVER=pdo_pgsql
+    DATABASE_HOST=mbs-postgresql-acc-01.postgres.database.azure.com
+    DATABASE_PORT=5432
+    DATABASE_NAME=platform_api
+    DATABASE_USER=${postgres-username}
+    DATABASE_PASS=${postgres-password}
+    DATABASE_CHAR=UTF8
+    DATABASE_VERSION=14.0
+    DATABASE_SSLMODE=prefer
+
+    SERVICES_API_URL=''
+    SERVICES_DEPRECATED_API_URL=http://api-gateway-service:8080
+    SERVICE_CALL_TOKEN=${service-call-token}
+    MBS_SELFSERVICE_PORTAL_BASE_URL=https://mijn-acc.bumastemra.nl
+    MBS_WORKS_SERVICE_BASE_URL=http://api-gateway-service:8080
+    BACKSTAGE_REFERER_BASE_URL=https://backstage-acc.bumastemra.nl
+    MEMBERSHIP_REGISTRATION_V2_VISIBLE=true
+
+    REDIS_URL=redis://redis-service
+
+    PLATFORM_BASE_URI=http://platform-api-service:8080/v1/
+    PLATFORM_API_TOKEN=${member-portal-api-key}
+    INVITATION_ENCRYPTION_KEY=${member-portal-api-key}
+
+    MAILER_URL=
+    DEFAULT_BUMA_EMAIL=no-reply-servicerechthebbenden@bumastemra.nl
+    DEFAULT_BUMA_EMAIL_NAME='MijnBumaStemra (Acceptance)'
+
+    KAFKA_DEFAULT_TOPIC=ACCEPTANCE_PLATFORM
+    KAFKA_URL=kafka-worker-0-acc.int.bumastemra.nl:9092,kafka-worker-1-acc.int.bumastemra.nl:9092,kafka-worker-2-acc.int.bumastemra.nl:9092
+    KAFKA_GROUP_ID=account.test
+
+    IDEAL_URL=https://abnamro.ideal-payment.de/ideal/iDEALv3
+
+    GOOGLE_ANALYTICS=GTM-MDGD8DW
+    GOOGLE_RECAPTCHA_SITE_KEY=${google-recaptcha-site-key}
+    GOOGLE_RECAPTCHA_SECRET=${google-recaptcha-secret}
+

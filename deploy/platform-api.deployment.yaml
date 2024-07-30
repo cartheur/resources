@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform-api
+  namespace: testing
+  labels:
+    app: platform-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platform-api
+  template:
+      metadata:
+        labels:
+          app: platform-api
+      spec:
+        tolerations:
+          - key: kubernetes.azure.com/scalesetpriority
+            operator: Equal
+            value: spot
+            effect: 'NoSchedule'
+        volumes:
+          - name: platform-api-config
+            configMap:
+              name: platform-api-configmap
+              items:
+                - key: .env
+                  path: .env
+        containers:
+          - name: platform-api
+            image: mbsakswetestaccacr.azurecr.io/platform-api:103.0
+            ports:
+              - containerPort: 80
+            imagePullPolicy: Always
+            readinessProbe:
+              httpGet:
+                  path: /healthcheck
+                  port: 8080
+              initialDelaySeconds: 5
+              periodSeconds: 5
+              timeoutSeconds: 1
+              successThreshold: 1
+              failureThreshold: 6
+            volumeMounts:
+              - mountPath: /var/www/symfony/.env
+                name: platform-api-config
+                subPath: .env
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: testing
+  labels:
+    app: redis
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+          app: redis
+    template:
+        metadata:
+            labels:
+              app: redis
+        spec:
+            tolerations:
+              - key: kubernetes.azure.com/scalesetpriority
+                operator: Equal
+                value: spot
+                effect: 'NoSchedule'
+            containers:
+            - name: redis
+              image: redis:alpine
+              ports:
+              - containerPort: 6379
+              imagePullPolicy: Always

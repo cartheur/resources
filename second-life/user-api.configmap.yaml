@@ -7,8 +7,8 @@ data:
   AZURE_STORAGE_CONFIG: '[{"name":"deprecated-storage","type":"blob","account":"bsotcweadcastd02","sasToken":"${mbs-blob-sas-token-soundfiles}","services":[{"name":"soundfiles","service":"bsotcweadcastd02container"}]},{"name":"mbs-storage","type":"blob","sasToken":"${azure-blob-mbs-storage-sas-token}","account":"mbsstorageacc","services":[{"name":"work-agreements","service":"work-agreements"},{"name":"setlists","service":"setlists"},{"name":"cession-assignments","service":"cession-assignments"},{"name":"membership-registration","service":"membership-registration"},{"name":"beat","service":"beat"}]},{"name":"mbs-storage-sound-files","type":"blob","sasToken":"${azure-blob-mbs-storage-sas-token}","account":"mbsstorageacc","services":[{"name":"sound-files","service":"sound-files"}]},{"name":"mbs-fileservice","type":"blob","account":"mbsfileserviceacc","sasToken":"${fileservice-blob-access-key}","services":[{"name":"works-service","service":"works-service"},{"name":"statement-service","service":"statement-service"},{"name":"user-service","service":"user-service"}]},{"name":"mbs-fileshare","type":"fileshare","account":"mbsportaldocacc","sasToken":"${azure-fileshares-mbs-statement-documents-sas-token}","services":[{"name":"published-documents","service":"mbsportaldocsacc"}]}]'
   APP_ENV: "acceptance"
   NODE_ENV: "production"
-  API_GATEWAY_URL: "https://api.testing.k8s.bumastemra.nl"
-  PORTAL_URL: "https://frontend.testing.k8s.bumastemra.nl"
+  API_GATEWAY_URL: "http://api-gateway-service:8080"
+  PORTAL_URL: "http://localhost:8080"
   PUPPETEER_EXECUTABLE_PATH: "/home/gitlab/chromium/linux-1056772/chrome-linux/chrome"
   PUPPETEER_ENABLED: 'false'
   SERVICE_CALL_TOKEN: "${service-call-token}"

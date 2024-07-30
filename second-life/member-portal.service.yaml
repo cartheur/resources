@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: member-portal-service
+  namespace: testing
+  labels:
+    app: platform-api
+spec:
+  type: ClusterIP
+  selector:
+    app: member-portal
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

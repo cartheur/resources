@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: testing
+  name: platform-api-configmap
+data:
+  .env: |
+    APP_ENV=dev
+    RELEASE=103.0
+    DATABASE_DRIVER=pdo_pgsql
+    DATABASE_HOST=mbs-postgresql-acc-01.postgres.database.azure.com
+    DATABASE_PORT=5432
+    DATABASE_NAME=platform_api
+    DATABASE_USER=${postgres-username}
+    DATABASE_PASS=${postgres-password}
+    DATABASE_CHAR=UTF8
+    DATABASE_VERSION=14.0
+    DATABASE_SSLMODE=prefer
+    SECRET=ThisWasATriumphImMakingANoteHereHugeSuccess
+    REDIS_URL=redis://redis-service
+    SENTRY_DSN=https://3f117aa6a32d4026807b4f18d6306a98@sentry.cmp.bumastemra-otc.nl/29
+    CORS_ALLOW_ORIGIN=^https?:\\/\\/(localhost|[a-z0-9-]+\\.bumastemra\\.nl)(:[0-9]+)?$
+    STAGE=acceptance
+
+    SIGNHOST_URL=https://api.signhost.com/api
+    SIGNHOST_APIKEY=${signhost-api-key}
+    SIGNHOST_APPKEY=${signhost-app-key}
+
+    FUSIONAUTH_URL=http://172.28.52.4:9011
+    FUSIONAUTH_API_KEY=${sso-service-token}
+    FUSIONAUTH_TENANT_ID=c314dc73-711d-6980-6a14-088924de708f
+    SSO_BACKSTAGE_CLIENT_ID=cb2c1078-49fe-432c-841b-08503dc05cd2
+    SSO_MEMBERPORTAL_CLIENT_ID=af634f5f-b884-4fc7-ab00-643ade2548fb
+
+    KAFKA_URL=kafka-worker-0-acc.int.bumastemra.nl:9092,kafka-worker-1-acc.int.bumastemra.nl:9092,kafka-worker-2-acc.int.bumastemra.nl:9092
+    KAFKA_DEFAULT_TOPIC=ACCEPTANCE_MAIN
+
+    AZURE_BLOB_MP3_ENDPOINT=https://bsotcweadcastd02.blob.core.windows.net/
+    AZURE_BLOB_MP3_SAS=${mbs-blob-sas-token-soundfiles}
+    AZURE_BLOB_MP3_CONTAINER_NAME='bsotcweadcastd02container'
+
+    IDEAL_URL=https://ecommerce.abnamro.nl/bvn-idx-iDEAL-rs/iDEALv3
+    SECURITY_ACCESS_TOKEN=${member-portal-api-key}
+    MEMBER_PORTAL_API_KEY=${member-portal-api-key}
+
+    MAILER_URL=
