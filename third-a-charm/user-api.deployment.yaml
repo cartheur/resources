@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-api
+  namespace: testing
+  labels:
+    app: user-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-api
+  template:
+    metadata:
+      labels:
+        app: user-api
+    spec:
+      tolerations:
+        - key: kubernetes.azure.com/scalesetpriority
+          operator: Equal
+          value: spot
+          effect: NoSchedule
+      containers:
+        - name: user-api
+          image: mbsakswetestaccacr.azurecr.io/buma-stemra-mono/user-service:107.0
+          ports:
+            - containerPort: 8080
+          command:
+            - node
+            - '--require'
+            - ./.pnp.cjs
+            - ./apps/api/main.js
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: user-api-configmap

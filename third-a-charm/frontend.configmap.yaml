@@ -1,0 +1,8 @@
+apiVersion: 'v1'
+kind: 'ConfigMap'
+metadata:
+  namespace: 'testing'
+  name: 'frontend-configmap'
+data:
+  config.js: |
+    window.config={ "DEPLOY_ENV": "acc", "PUBLIC_PATH": "http://localhost:3000/", "BASE_PATH": "/", "SSO_URL": "https://login-acc.bumastemra.nl", "SSO_APPLICATIONS": { "MijnBumaStemra": "af634f5f-b884-4fc7-ab00-643ade2548fb", "Backstage": "cb2c1078-49fe-432c-841b-08503dc05cd2" }, "GRAPHQL_URL": "http://localhost:3100", "DOWNLOADS_STATEMENTS_URL": "http://localhost:3100", "DOWNLOADS_WORKS_URL": "http://localhost:3100", "USER_SERVICE_URL": "http://localhost:3100", "PLATFORM_API_URL": "http://platform-api-service:8080/v1", "BECOME_MEMBER_URL": "https://lidworden.bumastemra.nl", "ONBOARDING_URL": "https://onboarding.bumastemra.nl", "BUSINESS_MONITOR_ENABLED": false, "BUSINESS_MONITOR_CLIENTID": "3e7b8aa1-f66f-445a-9a1b-87fb39722d70", "BUSINESS_MONITOR_HOST": "s.businessmonitor.nl", "BUSINESS_MONITOR_DEBUG": true, "SENTRY_ENABLED": false, "SENTRY_DSN": "https://885afeacd39547a9be607e81096c826f@sentry.bumastemra.nl/28", "GOOGLE_GA3": "UA-27908719-2", "GOOGLE_GA4": "G-EEJSCN2FWW", "SHOW_PDF_DOWNLOADS": true, "MY_MUSIC_SAFE_URL": "", "FEATURE_FLAGS_ENABLED": [ "agreements_download", "statements_documents", "work_adaptation_author", "work_clone", "work_registrations_unsigned", "business_monitor", "change_bank_account", "cession_assignments", "fa_upgrade_account", "rsin_number" ] }

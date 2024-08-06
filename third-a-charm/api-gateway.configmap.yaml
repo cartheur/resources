@@ -1,0 +1,40 @@
+apiVersion: 'v1'
+kind: 'ConfigMap'
+metadata:
+  namespace: 'testing'
+  name: 'api-gateway-configmap'
+data:
+  APP_ENV: "development"
+  NODE_ENV: "production"
+  API_GATEWAY_URL: "http://localhost:8080"
+  PORTAL_URL: "http://localhost:3000"
+  PUPPETEER_EXECUTABLE_PATH: "/home/gitlab/chromium/linux-1056772/chrome-linux/chrome"
+  PUPPETEER_ENABLED: 'false'
+  SERVICE_CALL_TOKEN: "${service-call-token}"
+  EXPRESS_REQUEST_TIMEOUT: '300000'
+  SECRET_SALT: "${secret-salt}"
+  JWT_PRIVATE_KEY: "${jwt-private-key}"
+  JWT_PUBLIC_KEY: "${jwt-public-key}"
+  SENTRY_ENABLED: 'true'
+  PM2_MODE: "cluster"
+  PM2_MERGE_LOGS: 'true'
+  SSO_URL: "https://login-acc.bumastemra.nl"
+  SSO_API_KEY: "${sso-service-token}"
+  SSO_TENANT_ID: "${sso-tenant-id}"
+  SSO_APPLICATIONS: '{"SetlistApp":"7df87155-34f1-4f29-9220-f4c70f4f86cf","MijnBumaStemra":"af634f5f-b884-4fc7-ab00-643ade2548fb","Backstage":"cb2c1078-49fe-432c-841b-08503dc05cd2","BumaStemraSSO":"3c219e58-ed0e-4b18-ad48-f4f92793ae32"}'
+  GRAPHQL_PLAYGROUND_ENABLED: 'true'
+  GRAPHQL_INTROSPECTION_ENABLED: 'true'
+  GRAPHQL_DEPTH_LIMIT: '10'
+  GRAPHQL_PING_SERVICES_RETRIES: '10'
+  GRAPHQL_PING_SERVICES_INTERVAL: '50'
+  GRAPHQL_PING_SERVICES_FETCH_TIMEOUT: '100'
+  GRAPHQL_GATEWAY_DEBUG: 'false'
+  GRAPHQL_ROOT_PATH: "graphql"
+  PM2_NAME: "api-gateway"
+  PM2_SCRIPT: "./main.js"
+  PM2_INSTANCES: '1'
+  PM2_INTERPRETER_ARGS: "--require /var/www/apps/api-gateway/.pnp.cjs --max-http-header-size"
+  SENTRY_DSN: "https://9bb07162979e42bb8f52d79a93d857d8@sentry.bumastemra.nl/26"
+  DEBUG: 'false'
+  PORT: '8080'
+  GRAPHQL_SERVICE_LIST: '[{"name":"works-service","url":"http://works-api-service:8080/graphql"},{"name":"statement-service","url":"http://statement-api-service:8080/graphql"},{"name":"user-service","url":"http://user-api-service:8080/graphql"}]'

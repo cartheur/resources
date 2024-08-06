@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: statement-api
+  namespace: testing
+  labels:
+    app: statement-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: statement-api
+  template:
+    metadata:
+      labels:
+        app: statement-api
+    spec:
+      tolerations:
+        - key: kubernetes.azure.com/scalesetpriority
+          operator: Equal
+          value: spot
+          effect: NoSchedule
+      containers:
+        - name: statement-api
+          image: >-
+            mbsakswetestaccacr.azurecr.io/buma-stemra-mono/statement-service:107.0
+          ports:
+            - containerPort: 8080
+          command:
+            - node
+            - '--require'
+            - ./.pnp.cjs
+            - ./apps/api/main.js
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: statement-api-configmap

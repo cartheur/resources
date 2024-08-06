@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: works-api
+  namespace: testing
+  labels:
+    app: works-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: works-api
+  template:
+    metadata:
+      labels:
+        app: works-api
+    spec:
+      tolerations:
+        - key: kubernetes.azure.com/scalesetpriority
+          operator: Equal
+          value: spot
+          effect: NoSchedule
+      containers:
+        - name: works-api
+          image: mbsakswetestaccacr.azurecr.io/buma-stemra-mono/works-service:107.0
+          ports:
+            - containerPort: 8080
+          command:
+            - node
+            - '--require'
+            - ./.pnp.cjs
+            - ./apps/api/main.js
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: works-api-configmap
